@@ -23,7 +23,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for arrays.
-     *
+     * 这样显示的时候就没有这两项
      * @var array
      */
     protected $hidden = [
