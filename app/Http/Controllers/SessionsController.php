@@ -21,7 +21,7 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 //        dd($credentials);array:2 ["email" => "1536520127@qq.com", "password" => "123456789"]
-        if (Auth::attempt($credentials)) {//验证用户名密码一致
+        if (Auth::attempt($credentials, $request->has('remember'))) {//验证用户名密码一致
             session()->flash('success', '欢迎回来');
             return redirect()->route('users.show', [Auth::user()]);//Auth::user()可以获取当前登录用户的信息
         } else {
