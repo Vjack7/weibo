@@ -48,10 +48,19 @@ footer {
       margin-top: 15px;
     }
   }
+}
 
+.gravatar {
+  float: left;
+  max-width: 50px;
+  border-radius: 50%;
+}
+/* Users edit*/
+.gravatar_edit {
+  margin: 15px atuo;
+  text-align: center;
   .gravatar {
-    float: left;
-    max-width: 50px;
-    border-radius: 50%;
+    float: none;
+    max-width: 100px;
   }
 }
