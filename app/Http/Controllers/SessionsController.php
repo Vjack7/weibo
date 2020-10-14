@@ -30,9 +30,15 @@ class SessionsController extends Controller
         ]);
 //        dd($credentials);array:2 ["email" => "1536520127@qq.com", "password" => "123456789"]
         if (Auth::attempt($credentials, $request->has('remember'))) {//验证用户名密码一致
-            session()->flash('success', '欢迎回来');
-            $fallback = route('users.show', Auth::user());
-            return redirect()->intended($fallback);//Auth::user()可以获取当前登录用户的信息
+            if (Auth::user()->activated) {
+                session()->flash('success', '欢迎回来');
+                $fallback = route('users.show', Auth::user());
+                return redirect()->intended($fallback);//Auth::user()可以获取当前登录用户的信息
+            } else {
+                Auth::logout();
+                session()->flash('warning', '您的账号未激活，请检查邮箱中的注册邮件进行激活。');
+                return redirect(’/‘);
+            }
         } else {
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back()->withInput();

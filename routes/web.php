@@ -26,3 +26,5 @@ Route::resource('users', 'UsersController');//用户相关
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+Route::get('sign/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');//用户点击激活连接，进入该路由
