@@ -31,6 +31,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
+    }
+
     //在模型创建前执行
     public static function boot()
     {
