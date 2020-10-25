@@ -38,3 +38,6 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 //通过token判断重设密码，更新用户重设的密码
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
+//微博
+Route::resource('statuses','StatusesController', ['only'=>['store', 'destroy']]);
